@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top" 
+        style="background-color: #2B51C3;">
+<div class="container">
+  <%= link_to "Notebook", authenticated_root_path, id: "logo" %>
+  <% if user_signed_in? %>
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "Home", authenticated_root_path %>
+      </li>
+
+      <li>
+        <%= link_to "Profile", user_path(current_user) %>
+      </li>
+
+      <li>
+        <%= link_to "Sign out", destroy_user_session_path,
+                                method: :delete %>
+      </li>
+
+    </ul>
+
+  </nav>
+<% end %>
+</div>
+</header>

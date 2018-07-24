@@ -1,0 +1,26 @@
+<% provide(:title, "Log in") %>
+<h2>Log in</h2>
+<div class="container">
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div >
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div>
+    <%= f.password_field :password, autocomplete: "off"%>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div>
+      <%= f.check_box :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in"  %>
+  </div>
+<% end %>
+<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+<br>
+<%= render "devise/shared/links" %>
+</div>

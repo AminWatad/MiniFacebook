@@ -10,6 +10,12 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'devise'
+gem 'omniauth'
+gem 'bootstrap-sass'
+gem 'bootstrap_form'
+gem 'jquery-rails'
+gem 'omniauth-facebook'
+gem 'figaro'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
