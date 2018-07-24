@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'figaro'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
