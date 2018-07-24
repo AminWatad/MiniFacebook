@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profile/show'
+  get 'profile/show', to: 'profile#show'
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
   end
