@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_212259) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.string "image"
+    t.string "image", default: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
