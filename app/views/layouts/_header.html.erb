@@ -6,15 +6,21 @@
   <nav>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <%= link_to "Home", authenticated_root_path %>
+        <%= link_to "Home",  authenticated_root_path, class:"btn"  %>
       </li>
 
       <li>
-        <%= link_to "Profile", profile_show_path %>
+        <%= link_to profile_show_path, class: "btn btn-circle btn-lg" do %>
+          <span>
+            <%= image_tag(current_user.image, alt:"avatar",
+                         class: "img") %>
+                
+          </span>
+        <% end %>
       </li>
 
       <li>
-        <%= link_to "Sign out", destroy_user_session_path,
+        <%= link_to "Sign out", destroy_user_session_path, class:"btn",
                                 method: :delete %>
       </li>
 
