@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :posts
+  has_many :activities, class_name: 'Activity'
+  has_many :likes, foreign_key: 'liker_id'
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -15,5 +17,13 @@ class User < ApplicationRecord
     # uncomment the line below to skip the confirmation emails.
     # user.skip_confirmation!
     end
+  end
+
+  def like(post)
+    liker = Like.create(post_id: post.id)
+    likes << liker
+    act = Activity.create(target_id: post.id, kind: "like", 
+                          user_target_id: post.user_id)
+    activities << act
   end
 end

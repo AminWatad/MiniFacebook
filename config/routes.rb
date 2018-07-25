@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'likes', to: 'likes#create'
+  get 'likes/destroy'
   get 'profile/show', to: 'profile#show'
   authenticated :user do
     root to: 'home#index', as: :authenticated_root

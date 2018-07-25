@@ -2,24 +2,47 @@
 
 <div class="container">
 <div class="row">
-  <aside class="col-sm-4">
+  <aside class="col-sm-5">
     <section>
       <%= image_tag(@user.image, alt: "Profile Picture", 
                     class: "profile-picture") %>
       <h3><%= @user.name %></h3>
     </section>
+    <section>
+      <h3>Activities</h3>
+      <div url="#" class="list-group">
+        <% @user.activities.each do |activity| %>
+          <a class= "list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1"><%= activity.text %></p>
+              <small> <%= time_ago_in_words(activity.created_at) %> ago</small>
+            </div>
+          </a>
+        <% end %>
+    
+      </div>
+    </section>
   </aside>
-  <aside class="col-sm-8">
+  <aside class="col-sm-7">
     <%= render 'shared/post_form' %>
     <div class="list-group">
       <% @posts.each do |post| %>
-      <%= link_to '#', class: "list-group-item list-group-item-action flex-column align-items-start" do %>
+      <div class= "list-group-item list-group-item-action flex-column align-items-start" >
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= @user.name %></h5>
         <small> Posted <%= time_ago_in_words(post.created_at) %> ago</small>
       </div>
-      <p class="mb-1"><%= post.content %></p>
-    <% end %>
+      <p class="mb-1">
+      <%= post.content %>
+      </p>
+      <span id="likes" class="badge badge-primary badge-pill">
+        <%= post.likes.count %> likes
+      </span>
+
+      <div class="like_form">
+        <%= render partial: 'like', locals: {post_id: post.id}  %>
+      </div>
+      </div>
   <% end %>
     </div>
   </aside>

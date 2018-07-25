@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_010058) do
+ActiveRecord::Schema.define(version: 2018_07_25_182027) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "kind"
+    t.integer "user_id"
+    t.integer "user_target_id"
+    t.integer "target_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "liker_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liker_id", "post_id"], name: "index_likes_on_liker_id_and_post_id", unique: true
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "content"

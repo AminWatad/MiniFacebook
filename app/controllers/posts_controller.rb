@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
+      current_user.activities.create(kind: "post", target_id: @post.id)
       redirect_to authenticated_root_path
     else
       render 'profile/show'
