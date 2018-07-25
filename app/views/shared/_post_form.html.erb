@@ -1,0 +1,10 @@
+<%= bootstrap_form_for(@post) do |f| %>
+
+  <div>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= f.submit "Create post" %>
+  </div>
+<% end %>

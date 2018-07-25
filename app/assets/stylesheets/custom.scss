@@ -135,3 +135,11 @@ fieldset.title legend
   line-height: 1.33;
   border-radius: 25px;
 }
+.post-input {
+  no-resize: true;
+}
+.posts-img {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+}
