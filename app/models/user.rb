@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :activities, class_name: 'Activity'
   has_many :likes, foreign_key: 'liker_id'
+  has_many :comments
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -36,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def likes?(post)
-    liker = Like.find_by(post_id: post.id)
+    liker = Like.find_by(post_id: post.id, liker_id: self.id)
     !liker.nil?
   end
 end

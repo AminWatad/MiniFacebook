@@ -11,7 +11,7 @@
     <section>
       <h3>Activities</h3>
       <div url="#" class="list-group">
-        <% @user.activities.each do |activity| %>
+        <% @user.activities.first(10).each do |activity| %>
           <a class= "list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
               <p class="mb-1"><%= activity.text %></p>
@@ -26,32 +26,7 @@
   <aside class="col-sm-7">
     <%= render 'shared/post_form' %>
     <div class="list-group">
-      <% @posts.each do |post| %>
-      <div class= "list-group-item list-group-item-action flex-column align-items-start" >
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"><%= @user.name %></h5>
-        <small> Posted <%= time_ago_in_words(post.created_at) %> ago</small>
-      </div>
-      <p class="mb-1">
-      <%= post.content %>
-      </p>
-      <span id="comments" class="badge badge-primary badge-pill">
-        0 comments
-      </span>
-      <span id="likes-<%=post.id%>" class="badge badge-primary badge-pill">
-        <%= post.likes.count %> likes
-      </span>
-      <% if !current_user.likes?(post) %>
-        <div id="like-form-<%=post.id%>">
-          <%= render partial: 'like', locals: {post_id: post.id}  %>
-        </div>
-      <% else %>
-        <div id="unlike-form-<%=post.id%>">
-          <%= render partial: 'unlike', locals: {post_id: post.id}  %>
-        </div>
-      <% end %>
-      </div>
-  <% end %>
+      <%= render @posts %>
     </div>
   </aside>
 </div>

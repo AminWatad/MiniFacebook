@@ -10,7 +10,7 @@
       </li>
 
       <li>
-        <%= link_to profile_show_path, class: "btn btn-circle btn-lg" do %>
+        <%= link_to profile_path(current_user), class: "btn btn-circle btn-lg" do %>
           <span>
             <%= image_tag(current_user.image, alt:"avatar",
                          class: "img") %>
