@@ -1,2 +1,3 @@
-$("#like_form").html("Unlike");
-$("#likes").html('<%= @post.likes.count %> likes');
+$('#like-form-<%=@post.id%>').html('<%= j render 'profile/unlike', post_id: @post.id %>')
+
+$("#likes-<%=@post.id%>").html('<%= @post.likes.count %> likes');

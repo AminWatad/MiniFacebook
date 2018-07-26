@@ -35,13 +35,21 @@
       <p class="mb-1">
       <%= post.content %>
       </p>
-      <span id="likes" class="badge badge-primary badge-pill">
+      <span id="comments" class="badge badge-primary badge-pill">
+        0 comments
+      </span>
+      <span id="likes-<%=post.id%>" class="badge badge-primary badge-pill">
         <%= post.likes.count %> likes
       </span>
-
-      <div class="like_form">
-        <%= render partial: 'like', locals: {post_id: post.id}  %>
-      </div>
+      <% if !current_user.likes?(post) %>
+        <div id="like-form-<%=post.id%>">
+          <%= render partial: 'like', locals: {post_id: post.id}  %>
+        </div>
+      <% else %>
+        <div id="unlike-form-<%=post.id%>">
+          <%= render partial: 'unlike', locals: {post_id: post.id}  %>
+        </div>
+      <% end %>
       </div>
   <% end %>
     </div>

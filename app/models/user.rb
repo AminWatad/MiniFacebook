@@ -20,10 +20,23 @@ class User < ApplicationRecord
   end
 
   def like(post)
-    liker = Like.create(post_id: post.id)
+    liker = Like.create(post_id: post.id, liker_id: self.id)
     likes << liker
     act = Activity.create(target_id: post.id, kind: "like", 
                           user_target_id: post.user_id)
     activities << act
+  end
+
+  def unlike(post)
+    liker = Like.find_by(post_id: post.id, liker_id: self.id)
+    act = Activity.find_by(target_id: post.id, kind: "like",
+                           user_target_id: post.user_id)
+    Like.delete(liker.id)
+    activities.delete(act)
+  end
+
+  def likes?(post)
+    liker = Like.find_by(post_id: post.id)
+    !liker.nil?
   end
 end
