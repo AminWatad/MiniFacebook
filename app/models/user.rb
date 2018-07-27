@@ -24,7 +24,8 @@ class User < ApplicationRecord
     liker = Like.create(post_id: post.id, liker_id: self.id)
     likes << liker
     act = Activity.create(target_id: post.id, kind: "like", 
-                          user_target_id: post.user_id)
+                          user_target_id: post.user_id, 
+                          user_id: self.id)
     activities << act
   end
 
@@ -33,11 +34,16 @@ class User < ApplicationRecord
     act = Activity.find_by(target_id: post.id, kind: "like",
                            user_target_id: post.user_id)
     Like.delete(liker.id)
-    activities.delete(act)
+    activities.destroy(act)
   end
 
   def likes?(post)
     liker = Like.find_by(post_id: post.id, liker_id: self.id)
     !liker.nil?
+  end
+
+  def notifications
+    nots = Activity.where(user_target_id: self.id)
+    nots.first(10)
   end
 end

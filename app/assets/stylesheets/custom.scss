@@ -164,6 +164,11 @@ fieldset.title legend
   font-weight: 500;
   margin: 0 0 0.5rem 0;
 }
-.btn-group button {
-  display: inline-block;
+div.btn-group form {
+  float: left;
+  display: inline;
+}
+.button_to,
+.button_to div {
+  display: inline;
 }

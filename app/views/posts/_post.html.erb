@@ -3,8 +3,8 @@
     <h5 class="mb-1"><%= @user.name %></h5>
     <small> Posted <%= time_ago_in_words(post.created_at) %> ago</small>
   </div>
-  <span id="comments" class="badge badge-primary badge-pill">
-    0 comments
+  <span id="comments-count-<%=post.id%>" class="badge badge-primary badge-pill">
+    <%= "#{post.comments.count} comments" %>
   </span>
   <span id="likes-<%=post.id%>" class="badge badge-primary badge-pill">
     <%= post.likes.count %> likes
@@ -12,31 +12,36 @@
   <p class="mb-1">
     <%= post.content %>
   </p>
-  <div class="btn-group">
+  <div class="row">
+  <div class="col-sm-6">
     <%= button_to "Comment", comment_new_path, 
-          class: "btn btn-light btn-sm",
+          class: "btn btn-light btn-block",
           params: {post_id: post.id},
           method: :get,
           remote: true %>
-
+  </div>
   <% if !current_user.likes?(post) %>
-    <div id="like-form-<%=post.id%>">
+    <div id="like-form-<%=post.id%>"  class="col-sm-6">
       <%= button_to 'Like', likes_path,
-                            class: "btn btn-info btn-sm",
+                            class: "btn btn-info btn-block",
                             params: {post_id: post.id},
                             method: :post,
                             remote: true %>
     </div>
   <% else %>
-    <div id="like-form-<%=post.id%>">
+    <div id="like-form-<%=post.id%>" class="col-sm-6">
       <%= button_to 'Unlike', likes_destroy_path,
-                            class: "btn btn-danger btn-sm",
+                            class: "btn btn-danger btn-block",
                             params: {post_id: post.id},
                             method: :delete,
                             remote: true %>
     </div>
   <% end %>
   </div>
+  <% if !post.comments.empty? %>
+  <% end %>
   <div id="comment-form-<%=post.id%>"></div>
-  <%= render post.comments %>
+  <div id="comments-<%=post.id%>">
+    <%= render post.comments %>
+  </div>  
 </div>

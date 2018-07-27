@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     root to: 'home#index', as: :authenticated_root
     get 'comment/new', to: 'comments#new'
     post 'comment/create', to: 'comments#create'
+    resources :post, only: [:show]
   end
   root to: redirect('users/sign_in')
   devise_for :users, 

@@ -1,1 +1,3 @@
 $('#comment-form-<%=@post.id%>').html('')
+$('#comments-<%=@post.id%>').html('<%= j render @comments %>')
+$("#comments-count-<%=@post.id%>").html('<%= @post.comments.count %> comments');
