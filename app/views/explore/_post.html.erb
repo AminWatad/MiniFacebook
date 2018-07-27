@@ -1,0 +1,6 @@
+<div class="box col2">
+  <h2><%= post.user.name%></h2>
+  <hr>
+  <p><%= post.content %></p>
+  <%= link_to "Visit Profile", profile_path(post.user), class: "btn btn-primary btn-block" %>
+</div>
