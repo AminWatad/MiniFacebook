@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'explore/index'
   post 'likes', to: 'likes#create'
   delete 'likes/destroy'
   authenticated :user do
