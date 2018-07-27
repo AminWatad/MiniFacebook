@@ -3,32 +3,40 @@
     <h5 class="mb-1"><%= @user.name %></h5>
     <small> Posted <%= time_ago_in_words(post.created_at) %> ago</small>
   </div>
-  <p class="mb-1">
-    <%= post.content %>
-  </p>
   <span id="comments" class="badge badge-primary badge-pill">
     0 comments
   </span>
   <span id="likes-<%=post.id%>" class="badge badge-primary badge-pill">
     <%= post.likes.count %> likes
   </span>
-  <div>
+  <p class="mb-1">
+    <%= post.content %>
+  </p>
+  <div class="btn-group">
     <%= button_to "Comment", comment_new_path, 
           class: "btn btn-light btn-sm",
           params: {post_id: post.id},
           method: :get,
           remote: true %>
-  </div>
 
   <% if !current_user.likes?(post) %>
     <div id="like-form-<%=post.id%>">
-      <%= render partial: 'like', locals: {post_id: post.id}  %>
+      <%= button_to 'Like', likes_path,
+                            class: "btn btn-info btn-sm",
+                            params: {post_id: post.id},
+                            method: :post,
+                            remote: true %>
     </div>
   <% else %>
     <div id="like-form-<%=post.id%>">
-      <%= render partial: 'unlike', locals: {post_id: post.id}  %>
+      <%= button_to 'Unlike', likes_destroy_path,
+                            class: "btn btn-danger btn-sm",
+                            params: {post_id: post.id},
+                            method: :delete,
+                            remote: true %>
     </div>
   <% end %>
+  </div>
   <div id="comment-form-<%=post.id%>"></div>
   <%= render post.comments %>
 </div>

@@ -1,0 +1,5 @@
+<%= button_to 'Unlike', likes_destroy_path,
+                      class: "btn btn-danger btn-sm",
+                      params: {post_id: post_id},
+                      method: :delete,
+                      remote: true %>

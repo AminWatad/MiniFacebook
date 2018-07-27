@@ -1,2 +1,2 @@
-$('#like-form-<%=@post.id%>').html('<%= j render 'profile/like',post_id: @post.id %>')
+$('#like-form-<%=@post.id%>').html('<%= j render 'like_button',post_id: @post.id %>')
 $("#likes-<%=@post.id%>").html('<%= @post.likes.count %> likes');

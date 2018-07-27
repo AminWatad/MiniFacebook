@@ -1,0 +1,5 @@
+<%= button_to 'Like', likes_path,
+                      class: "btn btn-info btn-sm", 
+                      params: {post_id: post_id},
+                      method: :post,
+                      remote: true %>
