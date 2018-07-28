@@ -1,7 +1,7 @@
 <% provide(:title, "Explore") %>
-
-<div id="masonry-container" class="transitions-enabled centered infinite-scroll clearfix masonry">
-
+<div class="container">
+<div class="card-columns">
   <%= render partial: 'explore/post', collection: @posts %>
-
+  <%= render partial: 'explore/picture' %>
+</div>
 </div>

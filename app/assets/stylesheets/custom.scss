@@ -3,12 +3,23 @@
 
 body {
   padding-top: 60px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: #fff;
 }
-
+.navbar {
+  padding: 0px 16px 1px;
+  background-color: #2B51C3;
+}
+.badge {
+  float: right;
+  margin-right: 5px;
+  background-color: #777;
+}
 section {
   overflow: auto;
 }
-
 textarea {
   resize: vertical;
 }
@@ -17,7 +28,6 @@ textarea {
   height: 200px;
   border-radius: 50%;
 }
-
 .center {
   text-align: center;
 }
@@ -25,11 +35,14 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
-
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
-
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -45,10 +58,17 @@ h2 {
   font-weight: normal;
   color: #777;
 }
-
+.time {
+  font-size: 0.6em;
+  font-color: #777;
+}
 p {
-  font-size: 1.1em;
+  font-size: 14px;
   line-height: 1.7em;
+}
+
+.list-group-item p {
+  font-size: 0.8em;
 }
 
 header a {
@@ -59,6 +79,11 @@ header a {
   font-size: 0.7em;
   color: #777;
 }
+.h5 {
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -66,10 +91,12 @@ header a {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  //padding-top: 9px;
   font-weight: bold;
 }
-
+header ul {
+  margin:0;
+}
 #logo:hover {
   color: #fff;
   text-decoration: none;
@@ -171,17 +198,3 @@ div.btn-group form {
 .button_to div {
   display: inline;
 }
-#masonry-container {
-  background: #FFF;
-  padding: 5px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  clear: both;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-}
-
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }

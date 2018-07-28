@@ -3,12 +3,14 @@
     <h5 class="mb-1"><%= @user.name %></h5>
     <small> Posted <%= time_ago_in_words(post.created_at) %> ago</small>
   </div>
+  <div>
   <span id="comments-count-<%=post.id%>" class="badge badge-primary badge-pill">
     <%= "#{post.comments.count} comments" %>
   </span>
   <span id="likes-<%=post.id%>" class="badge badge-primary badge-pill">
     <%= post.likes.count %> likes
   </span>
+  </div>
   <p class="mb-1">
     <%= post.content %>
   </p>
