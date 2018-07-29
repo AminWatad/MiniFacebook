@@ -1,0 +1,6 @@
+<%= bootstrap_form_for(current_user.images.build,
+                        url: images_create_path) do |f| %>
+  <%= f.text_area :description %>
+  <%= f.text_field :url %>
+  <%= f.submit %>
+<% end %>

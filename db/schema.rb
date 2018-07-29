@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_203453) do
+ActiveRecord::Schema.define(version: 2018_07_29_012847) do
 
   create_table "activities", force: :cascade do |t|
     t.string "kind"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2018_07_26_203453) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "liker_id"
     t.integer "post_id"
@@ -48,6 +57,17 @@ ActiveRecord::Schema.define(version: 2018_07_26_203453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "requester_id"
+    t.integer "requestee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.index ["requestee_id"], name: "index_requests_on_requestee_id"
+    t.index ["requester_id", "requestee_id"], name: "index_requests_on_requester_id_and_requestee_id", unique: true
+    t.index ["requester_id"], name: "index_requests_on_requester_id"
   end
 
   create_table "users", force: :cascade do |t|

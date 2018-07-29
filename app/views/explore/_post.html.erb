@@ -1,13 +1,12 @@
 <div class="card">
+  <%= link_to profile_path(post.user) do %>
   <div class="card-body">
     <h5 class="card-title"><%= post.user.name%></h5>
     <p class="card-text"><%= post.content %></p>
     <p class="card-text"><small class="text-muted">
       Post <%= time_ago_in_words(post.created_at) %> ago.
     </small></p>
-    <hr>
-    <%= link_to "View profile", profile_path(post.user), 
-                class: "btn btn-link btn-block" %>
-</div>
+  </div>
+<% end %>
 </div>
 

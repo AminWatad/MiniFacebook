@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+  def new
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def create
     @post = current_user.posts.build(post_params)
 

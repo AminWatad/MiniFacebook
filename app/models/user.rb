@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_many :activities, class_name: 'Activity'
   has_many :likes, foreign_key: 'liker_id'
   has_many :comments
+  has_many :images
+  has_many :user_requests, class_name: "Request", 
+                          foreign_key: "requester_id"
+  has_many :user_requested, class_name: "Request", 
+                            foreign_key: "requestee_id"
+  has_many :requesters, through: :user_requests, source: :requestee
+  has_many :requested, through: :user_requested, source: :requester
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -18,6 +25,17 @@ class User < ApplicationRecord
     # uncomment the line below to skip the confirmation emails.
     # user.skip_confirmation!
     end
+  end
+  def request(user)
+    requested << user
+  end
+  
+  def unrequest(user)
+    requested.delete(user)
+  end 
+  
+  def requested?(user)
+    requested.include?(user)
   end
 
   def like(post)

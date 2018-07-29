@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'images/new'
+  post 'images/create'
+  get 'images/show'
   get 'explore/index'
   post 'likes', to: 'likes#create'
   delete 'likes/destroy'

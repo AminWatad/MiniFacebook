@@ -62,6 +62,13 @@ h2 {
   font-size: 0.6em;
   font-color: #777;
 }
+a:link    {color:#000;}  /* unvisited link  */
+a:visited {color:#000;}  /* visited link    */
+a:hover   {
+  color:#000;
+  text-decoration: none;
+}  /* mouse over link */
+a:active  {color:#000;}
 p {
   font-size: 14px;
   line-height: 1.7em;
