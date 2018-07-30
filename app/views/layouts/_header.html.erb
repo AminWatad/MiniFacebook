@@ -7,10 +7,17 @@
                       
       <ul class="nav navbar-right">
         <li >
-          <%= link_to "Explore", explore_index_path, class: "nav-link" %>
+          <%= link_to  explore_index_path,
+                class: "btn btn-small btn-social nav-cutsom"  do %>
+            <span class="fa fa-globe"></span> Explore
+          <% end %>
+          
         </li>
         <li>
-          <%= link_to "Home",  authenticated_root_path, class: "nav-link" %>
+          <%= link_to  authenticated_root_path,
+                class: "btn btn-small btn-social nav-cutsom"  do %>
+            <span class="fa fa-home"></span> Home
+          <% end %>
         </li>
         <li>
           <%= link_to profile_path(current_user), class: "btn btn-circle btn-lg" do %>
@@ -23,9 +30,12 @@
         <% end %>
         </li>
         <li>
-          <%= link_to "Sign out", destroy_user_session_path, 
-                                class: "nav-link",
-                                method: :delete %>
+          <%= link_to destroy_user_session_path,
+                      class: "btn btn-small btn-social nav-cutsom",
+                      method: :delete do %>
+            <span class="fa fa-sign-out"></span>Sign Out
+          <% end %>
+
         </li>
     </ul>
   <% end %>
