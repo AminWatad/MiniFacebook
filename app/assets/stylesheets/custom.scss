@@ -30,7 +30,13 @@ a.btn.btn-small.btn-social {
 }
 a.btn.btn-small.btn-social.post {
   color: #2B51C3;
+  float: left;
 }
+a.btn.btn-small.btn-social.like {
+  color: #2B51C3;
+  float: right;
+}
+
 section {
   overflow: auto;
 }

@@ -25,5 +25,12 @@
       <% end %>
     <% end %>  
     </div>
+    <%= link_to likes_destroy_path(post_id: post.id),
+        class: "btn btn-small btn-social like" do %>
+        <span class="fa fa-odnoklassniki"></span>
+        <div id="likes-<%= post.id %>">
+          <%= pluralize(post.likes.count, 'like') %>
+        </div>
+    <% end %>
   </div>
 </div>

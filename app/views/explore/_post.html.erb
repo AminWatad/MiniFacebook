@@ -1,6 +1,10 @@
 <div class="card">
   <%= link_to profile_path(post.user) do %>
-  <div class="card-body">
+    <% if !post.image.nil? %>
+      <%= image_tag(post.image.url, class: "card-img-top") %>
+    <% end %>
+
+    <div class="card-body">
     <h5 class="card-title"><%= post.user.name%></h5>
     <p class="card-text"><%= post.content %></p>
     <p class="card-text"><small class="text-muted">
