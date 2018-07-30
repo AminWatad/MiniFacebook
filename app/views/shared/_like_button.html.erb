@@ -1,0 +1,6 @@
+<%= link_to  likes_path(post_id: @post.id),
+            class: "btn btn-small btn-social post",
+            remote: true,
+            method: :post do %>
+  <span class="fa fa-thumbs-up"></span> Like
+<% end %>

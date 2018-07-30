@@ -1,0 +1,23 @@
+<% if current_user.friend?(@user) %>
+  <%= render 'unfriend' %>
+<% elsif current_user.requested_by?(@user) %>
+  <%= button_to "Accept Request", profile_accept_path,
+                                  class: "btn btn-primary",
+                                  params: {user_id: user_id},
+                                  remote: true %>
+  <%= button_to "Decline", profile_decline_path,
+                                  class: "btn btn-danger",
+                                  params: {user_id: user_id},
+                                  remote: true %>
+
+<% elsif current_user.requested?(@user) %>
+  <%= button_to "Cancel request", profile_unrequest_path,
+                                  class: "btn btn-primary btn-block",
+                                  params: {user_id: user_id},
+                                  remote: true %>
+<% else %>
+  <%= button_to "Add friend", profile_request_path, 
+                              class: "btn btn-primary btn-block",
+                              params: {user_id: user_id},
+                              remote: true %>
+<% end %>

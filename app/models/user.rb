@@ -15,6 +15,9 @@ class User < ApplicationRecord
                             foreign_key: "requestee_id"
   has_many :requesters, through: :user_requests, source: :requestee
   has_many :requested, through: :user_requested, source: :requester
+
+  has_many :relationships
+  has_many :friends, through: :relationships
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -36,6 +39,22 @@ class User < ApplicationRecord
   
   def requested?(user)
     requested.include?(user)
+  end
+  
+  def requested_by?(user)
+    requesters.include?(user)
+  end
+  
+  def befriend(user)
+    friends << user
+  end
+
+  def unfriend(user)
+    friends.delete(user)
+  end
+
+  def friend?(user)
+    friends.include?(user)
   end
 
   def like(post)
@@ -63,5 +82,12 @@ class User < ApplicationRecord
   def notifications
     nots = Activity.where(user_target_id: self.id)
     nots.first(10)
+  end
+
+  def feed
+    friends_ids = "SELECT friend_id FROM relationships
+                   WHERE user_id = :user_id"
+    Post.where("user_id IN (#{friends_ids})
+               OR user_id = :user_id", user_id: id)
   end
 end

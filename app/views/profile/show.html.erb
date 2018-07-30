@@ -9,13 +9,29 @@
       <h3><%= @user.name %></h3>
     </section>
     <section>
+      <h3>Friends(<%=@user.friends.count%>)</h3>
+      <div class="list-group">
+        <%= render partial: 'friend', collection: @user.friends %>
+      </div>
+    </section>
+    <section>
       <% if current_user != @user %>
+        <div id="request-button">
+          <%= render 'friend_request', user_id: @user.id %>
+        </div>
       <h3>Activities</h3>
       <div url="#" class="list-group">
         <%= render @user.activities.first(10) %>
       </div>
     </section>
   <% else %>
+    <section>
+    <h3>Friends Requests(<%=@user.requesters.count%>)</h3>
+      <div class="list-group">
+        <%= render partial: 'requester',
+            collection: current_user.requesters %>
+    </div>
+    </section>
     <section>
       <h3>Notifications</h3>
       <div url="#" class="list-group">

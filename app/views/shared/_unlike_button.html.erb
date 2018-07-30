@@ -1,0 +1,6 @@
+<%= link_to  likes_destroy_path(post_id: @post.id),
+            class: "btn btn-small btn-social post",
+            remote: true, 
+            method: :delete do %>
+  <span class="fa fa-thumbs-down"></span> Unlike
+<% end %>

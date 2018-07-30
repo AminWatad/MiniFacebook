@@ -18,6 +18,20 @@ body {
   background-color: #777;
 }
 section {
+  padding-bottom: 30px;
+}
+
+a.btn.btn-social.btn-twitter.btn-small {
+  text-color: #007bff;
+}
+
+a.btn.btn-small.btn-social {
+  color:#FFF;
+}
+a.btn.btn-small.btn-social.post {
+  color: #2B51C3;
+}
+section {
   overflow: auto;
 }
 textarea {
@@ -204,4 +218,12 @@ div.btn-group form {
 .button_to,
 .button_to div {
   display: inline;
+}
+a.nav-link {
+  color:#FFF;
+  text-align:bottom;
+}
+
+.post-card {
+  margin-bottom: 20px;
 }

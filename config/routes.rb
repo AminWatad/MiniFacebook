@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'images/show'
   get 'explore/index'
   post 'likes', to: 'likes#create'
+  post 'profile/request', to: 'profile#request_friendship'
+  post 'profile/unrequest', to: 'profile#delete_request'
+  post 'profile/accept', to: 'profile#accept'
+  post 'profile/decline', to: 'profile#decline'
+
   delete 'likes/destroy'
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
