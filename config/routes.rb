@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'profile/unrequest', to: 'profile#delete_request'
   post 'profile/accept', to: 'profile#accept'
   post 'profile/decline', to: 'profile#decline'
-
+  get 'likes_show', to: 'likes#show'
   delete 'likes/destroy'
   authenticated :user do
     root to: 'home#index', as: :authenticated_root

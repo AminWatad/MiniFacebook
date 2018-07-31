@@ -1,4 +1,13 @@
 class LikesController < ApplicationController
+  
+  def show
+    @post= Post.find(params[:post_id])
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @post = Post.find(params[:post_id])
     current_user.like(@post)

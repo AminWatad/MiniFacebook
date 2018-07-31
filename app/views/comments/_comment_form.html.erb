@@ -1,7 +1,8 @@
 <%= bootstrap_form_for(current_user.comments.build,
+              layout: :inline,         
               url: comment_create_path,
               remote: true) do |f| %>
-  <%= f.text_field :content %>
+  <%= f.text_field :content, hide_label: true  %>
   <div><%= hidden_field_tag :post_id, post_id %></div>
-  <%= f.submit "Post", class: "btn btn-info btn-sm" %>
+  <%= f.submit "Post", class: "btn btn-info" %>
 <% end %>

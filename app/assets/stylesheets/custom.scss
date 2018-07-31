@@ -20,7 +20,12 @@ body {
 section {
   padding-bottom: 30px;
 }
-
+.form-control {
+  width: 100% !important;
+}
+.form-group { 
+  flex-grow: 1 !important;
+}
 a.btn.btn-social.btn-twitter.btn-small {
   text-color: #007bff;
 }
@@ -104,6 +109,10 @@ header a {
   font-weight: bold; 
   color: #fff;
 }
+.media {
+  align-items: center;
+}
+
 .activity {
   font-size: 0.7em;
   color: #777;
@@ -205,6 +214,11 @@ fieldset.title legend
   width: 64px;
   height: 64px;
   display: inline-block;
+}
+.like-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
 }
 .block {
   overflow: hidden;

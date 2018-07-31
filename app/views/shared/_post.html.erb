@@ -1,0 +1,46 @@
+<div class="card text-center post-card">
+  <div class="card-header text-muted">
+    <%= time_ago_in_words(post.created_at) %> ago.
+     
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.user.name %></h5>
+    <p class="card-text"><%= post.content %></p>
+  </div>
+  <div class="card-footer text-muted">
+    <div id="like-button-<%= post.id %>">
+    <% if !current_user.likes?(post) %>
+      <%= link_to  likes_path(post_id: post.id), 
+        class: "btn btn-small btn-social post",
+        remote: true,
+        method: :post do %>
+        <span class="fa fa-thumbs-up"></span> Like
+      <% end %>
+    <% else %>
+      <%= link_to  likes_destroy_path(post_id: post.id), 
+        class: "btn btn-small btn-social post",
+        remote: true,
+        method: :delete do %>
+        <span class="fa fa-thumbs-down"></span> Unlike
+      <% end %>
+    <% end %>  
+    </div>
+    <%= link_to likes_show_path(post_id: post.id),
+      class: "btn btn-small btn-social like",
+      data: {toggle: 'modal', target: "likes-list-#{post.id}"},
+      remote: true do %>
+        <span class="fa fa-odnoklassniki"></span>
+        <div id="likes-<%= post.id %>">
+          <%= pluralize(post.likes.count, 'like') %>
+        </div>
+      <% end %>
+      <div id="likes-modal-<%=post.id%>"> </div>
+      <%= link_to comment_new_path(post_id: post.id),
+        class: "btn btn-small btn-social post",
+        method: :get,
+        remote: true do %>
+        <span class="fa fa-comment"></span>Comment
+      <% end %>
+  </div>
+        <div id="comment-form-<%=post.id%>"></div>
+</div>

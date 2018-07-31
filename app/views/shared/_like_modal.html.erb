@@ -1,0 +1,15 @@
+<ul class="list-unstyled">
+  <% Post.find(post_id).likes.each do |like| %>
+    <li class="media">
+      <%= image_tag(like.liker.image, class: "like-img mr-3") %>
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">
+          <%= link_to profile_path(like.liker) do %>
+            <%= like.liker.name %> 
+          <% end %>
+        </h5>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
