@@ -1,0 +1,16 @@
+<ul class="list-unstyled">
+  <% Post.find(post_id).comments.each do |comment| %>
+    <li class="media li-comment">
+      <%= image_tag(comment.user.image, class: "like-img mr-3") %>
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">
+          <%= link_to profile_path(comment.user) do %>
+            <%= comment.user.name %> 
+          <% end %>
+        </h5>
+        <p><%= comment.content %></p>
+      </div>
+    </li>
+  <% end %>
+</ul>
+

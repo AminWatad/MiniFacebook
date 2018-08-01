@@ -1,4 +1,13 @@
 class CommentsController < ApplicationController
+  
+  def show
+    @post = Post.find(params[:post_id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @comment = current_user.comments.build
     @post = Post.find(params[:post_id])

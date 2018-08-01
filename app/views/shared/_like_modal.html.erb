@@ -1,6 +1,6 @@
 <ul class="list-unstyled">
   <% Post.find(post_id).likes.each do |like| %>
-    <li class="media">
+    <li class="media li-like">
       <%= image_tag(like.liker.image, class: "like-img mr-3") %>
       <div class="media-body">
         <h5 class="mt-0 mb-1">

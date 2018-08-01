@@ -1,6 +1,8 @@
 <div class="container">
   
 <%= render 'shared/likes_modal' %>
+<%= render 'shared/comments_modal' %>
+
 <% if !current_user.friends.any? %>
   <h5>No posts to show...</h5>
   <h5> Add friends...</h5>
