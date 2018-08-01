@@ -1,2 +1,6 @@
 $('#comment-form-<%=@post.id%>').html('')
 $("#comments-count-<%=@post.id%>").html('<%= @post.comments.count %> comments');
+
+$('#modal-comments').html('<%= j render 'shared/comment_modal',
+                                    post_id: @post.id %>')
+$('#comments-list').modal('show')
