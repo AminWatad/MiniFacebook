@@ -4,6 +4,8 @@
 <div class="row">
   <aside class="col-sm-5">
     <%= render 'shared/likes_modal' %>
+    <%= render 'shared/comments_modal' %>
+
     <section>
       <%= image_tag(@user.image, alt: "Profile Picture", 
                     class: "profile-picture") %>
@@ -61,7 +63,7 @@
     <% end %>
 
     <div class="list-group">
-      <%= render partial: 'post', collection: @posts  %>
+      <%= render partial: 'shared/post', collection: @posts  %>
     </div>
   </aside>
 </div>
